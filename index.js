@@ -196,6 +196,8 @@ function overloadAPI(video) {
 	video[ಠpause] = video.pause;
 	video.play = play;
 	video.pause = pause;
+	video.__driver__ = player.driver; // expose driver to allow schenanigans
+	video.__updater__ = player.updater; // expose updater to allow schenanigans
 	proxyProperty(video, 'paused', player.driver);
 	proxyProperty(video, 'muted', player.driver, true);
 	proxyProperty(video, 'ended', player.driver); // TODO: read only (it fails automatically only when it has audio)
